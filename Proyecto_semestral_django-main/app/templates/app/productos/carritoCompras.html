@@ -1,0 +1,28 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block contenido %}
+
+<div class="container-fluid">
+    <div class="row">
+    {% for aux in listaCarrito %}
+        <div class="col" style="width: 100%; margin: 5px 5px;">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src={{ aux.imagen.url }} alt="">
+                <div class="card-body">
+                <h5 class="card-title">{{ aux.tipo }}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item">Nombre: {{ aux.nombre }}</li>
+                <li class="list-group-item">Precio: ${{ aux.precio }}</li>
+                </ul>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+
+<div>
+<a ></a>
+</div>
+
+{% endblock %}

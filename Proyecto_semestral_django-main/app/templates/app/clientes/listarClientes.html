@@ -1,0 +1,45 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block contenido %}
+<section class="py=4">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <table class="table table-condesed table-">
+              <thead>
+                  <tr>
+                      <td>CODIGO</td>
+                      <td>NOMBRE</td>
+                      <td>TELEFONO</td>
+                      <td>DIRECCION</td>
+                      <td>CORREO</td>
+                      <td>PAIS</td>
+                      <td>TIPO</td>
+                      <td>IMAGEN</td>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for aux in listaClientes %}
+                  <tr>
+                      <td>{{ aux.codigo }}</td>
+                      <td>{{ aux.nombre }}</td>
+                      <td>{{ aux.numero_telefono }}</td>
+                      <td>{{ aux.direccion }}</td>
+                      <td>{{ aux.correo }}</td>
+                      <td>{{ aux.pais }}</td>
+                      <td>{{ aux.tipo_cliente }}</td>
+                      <td>{{ aux.imagen.url }}</td>
+                      <td>
+                          <a href="{% url 'modificarClientes' aux.codigo %}" class="btn btn-info">Modificar</a>
+                          <a onclick="eliminarc({{ aux.codigo }})" class="btn btn-danger">Eliminar</a>
+                      </td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
