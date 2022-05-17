@@ -15,7 +15,7 @@
     <style>@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Anonymous+Pro:ital@1&display=swap');</style>
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.css"rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/Style.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/style.css' %}">
 </head>
 <body class="body" style="font-family: 'Anonymous Pro', monospace;">
   <!-- Titulo -->
@@ -41,10 +41,10 @@
             <a class="nav-link" data-bs-toggle="modal" data-bs-target="#Perfil" href="#">Perfil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="lista_producto.html">Productos</a>
+            <a class="nav-link" href="{% url 'listarProductos' %}">Productos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="carrito_compra.html">Carrito</a>
+            <a class="nav-link" href="{% url 'carritoCompras' %}">Carrito</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#Descuento">Descuento</a>
@@ -70,13 +70,13 @@
         <div id="carouselExampleControls" class="carousel slide carousel-fade" data-mdb-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="img/plantas1.png" class="d-block w-100" alt=""/>
+              <img src="{% static 'app/img/plantas1.png' %}" class="d-block w-100" alt=""/>
             </div>
             <div class="carousel-item">
-              <img src="img/plantas2.png" class="d-block w-100" alt=""/>
+              <img src="{% static 'app/img/plantas2.png' %}" class="d-block w-100" alt=""/>
             </div>
             <div class="carousel-item">
-              <img src="img/plantas3.png" class="d-block w-100" alt=""/>
+              <img src="{% static 'app/img/plantas3.png' %}" class="d-block w-100" alt=""/>
             </div>
           </div>
           <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleControls" data-mdb-slide="prev">

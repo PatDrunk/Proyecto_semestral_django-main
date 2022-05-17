@@ -44,14 +44,12 @@ function eliminarc(codigo){
     })
 }
 
-
-
 function success(){
   Swal.fire({
     position: 'top',
     icon: 'success',
-    title: 'Your work has been saved',
+    title: 'Se agrego el producto al carrito',
     showConfirmButton: false,
     timer: 1500
-  })
+  }).then
 }

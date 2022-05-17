@@ -13,31 +13,32 @@ def base(request):
 def login(request):
     return render(request,'app/index_login.html')
 
-def carrito(request):
-    return render(request, 'app/carrito_compra.html')
+def seguimiento(request):
+    return render(request, 'app/seguimiento.html')
 
 def historial(request):
     return render(request, 'app/historial.html')
 
-def listaproducto(request):
-    return render(request, 'app/lista_producto.html')
-
-def perfil(request):
-    return render(request, 'app/perfil.html')
-
-def seguimiento(request):
-    return render(request, 'app/seguimiento.html')
-
-def listarProductos(request):
+def productos(request):
     productosAll = Producto.objects.all()
     datos ={ 'listaProductos' : productosAll}
-
+    
     if request.method == 'POST':
         carrito = Carrito()
         carrito.nombre = request.POST.get('nombre')
         carrito.precio = request.POST.get('precio')
         carrito.imagen = request.POST.get('imagen')
         carrito.save()
+
+    return render(request, 'app/productos/productos.html',datos)
+
+def perfil(request):
+    return render(request, 'app/perfil.html')
+
+def listarProductos(request):
+    productosAll = Producto.objects.all()
+    datos ={ 'listaProductos' : productosAll}
+
 
     return render(request, 'app/productos/listarProductos.html',datos)
 
@@ -93,16 +94,16 @@ def agregarClientes(request):
     return render(request, 'app/clientes/agregarClientes.html',datos)
 
 def modificarClientes(request,codigo):
-    Cliente = Cliente.objects.get(codigo=codigo)
+    cliente = Cliente.objects.get(codigo=codigo)
     datos = {
-        'form' : ClienteForm(instance=Cliente)
+        'formc' : ClienteForm(instance=cliente)
     }
     if request.method == 'POST':
-        formulario = ClienteForm(data=request.POST, files=request.FILES, instance=Cliente)
+        formulario = ClienteForm(data=request.POST, files=request.FILES, instance=cliente)
         if formulario.is_valid():
             formulario.save()
             datos['mensaje'] = "Cliente modificado correctamente"
-            datos['form'] = formulario
+            datos['formc'] = formulario
             
     return render(request, 'app/clientes/modificarClientes.html',datos)
 
@@ -120,6 +121,6 @@ def carritoCompras(request):
 
 def compraExitosa(request):
     carrito = Carrito.objects.all()
-    carrito.delete
+    carrito.delete()
 
     return render(request, 'app/productos/compraExitosa.html')

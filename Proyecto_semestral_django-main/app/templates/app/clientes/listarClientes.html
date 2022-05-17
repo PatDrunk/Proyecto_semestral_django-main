@@ -28,7 +28,15 @@
                       <td>{{ aux.correo }}</td>
                       <td>{{ aux.pais }}</td>
                       <td>{{ aux.tipo_cliente }}</td>
-                      <td>{{ aux.imagen.url }}</td>
+                      {% if aux.imagen %}
+                      <td>
+                        <img src="{{ aux.imagen.url }}" alt="" class="prod-size" width="70" height="70">
+                      </td>
+                      {% else %}
+                        <td>
+                          <img src="{%static 'app/img/arbusto1.jpg' %}" alt="" class="prod-size" width="70" height="70">
+                        </td>
+                      {% endif %}
                       <td>
                           <a href="{% url 'modificarClientes' aux.codigo %}" class="btn btn-info">Modificar</a>
                           <a onclick="eliminarc({{ aux.codigo }})" class="btn btn-danger">Eliminar</a>

@@ -54,7 +54,7 @@ class Cliente(models.Model):
         return self.nombre
 
 class Carrito(models.Model):
-    nombre = models.CharField(max_length=90)
+    nombre = models.CharField(max_length=90,)
     precio = models.IntegerField()
     imagen = models.ImageField(upload_to= "carrito", null=False)
 

@@ -39,13 +39,6 @@
                     <td>
                         <a href="{% url 'modificarProductos' aux.codigo %}" class="btn btn-info">Modificar</a>
                         <a onclick="eliminar({{ aux.codigo }})" class="btn btn-danger">Eliminar</a>
-                        <form action="" method="POST">
-                          {% csrf_token %}
-                          <input type="hidden" name="nombre" id="nombre" value="{{ aux.nombre }}">
-                          <input type="hidden" name="precio" id="precio" value="{{ aux.precio }}">
-                          <input type="hidden" name="imagen" id="imagen" value="{{ aux.imagen }}">
-                          <input onclick="success" type="submit" value="Comprar" style="cursor: pointer;" class="btn btn-success btn-sm ml-auto">
-                        </form>
                     </td>
                 </tr>
                 {% endfor %}
